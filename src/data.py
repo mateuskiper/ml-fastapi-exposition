@@ -1,11 +1,35 @@
 import numpy as np
+import pandas as pd
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+
+
+def clean_data(df):
+    """
+    Clean data
+    """
+    df.replace({"?": None}, inplace=True)
+    df.dropna(inplace=True)
+    df.drop(
+        ["fnlgt", "education-num", "capital-gain", "capital-loss"], axis=1, inplace=True
+    )
+
+    return df
+
+
+def load_data(data_path):
+    """
+    Execute clean_data and return pandas dataframe
+    """
+    df = pd.read_csv(data_path, skipinitialspace=True)
+    df = clean_data(df)
+
+    return df
 
 
 def process_data(
     X, categorical_features=[], label=None, training=True, encoder=None, lb=None
 ):
-    """ Process the data used in the machine learning pipeline.
+    """Process the data used in the machine learning pipeline.
 
     Processes the data using one hot encoding for the categorical features and a
     label binarizer for the labels. This can be used in either training or
