@@ -1,4 +1,4 @@
-from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
 
@@ -18,7 +18,7 @@ def train_model(X_train, y_train):
         Trained machine learning model.
     """
 
-    model = LogisticRegression(penalty="l2")
+    model = DecisionTreeClassifier()
     model.fit(X_train, y_train)
 
     return model

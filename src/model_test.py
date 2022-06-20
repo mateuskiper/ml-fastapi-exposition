@@ -24,7 +24,7 @@ def categorical_features():
     """
     Set categorical features
     """
-    cat_features = [
+    categorical_features = [
         "workclass",
         "education",
         "marital-status",
@@ -35,10 +35,10 @@ def categorical_features():
         "native-country",
     ]
 
-    return cat_features
+    return categorical_features
 
 
-def test_process_encoder(data, cat_features):
+def test_process_encoder(data, categorical_features):
     """
     Check if split have same number of rows for X and y
     """
@@ -47,14 +47,14 @@ def test_process_encoder(data, cat_features):
 
     _, _, encoder, lb = process_data(
         data,
-        categorical_features=cat_features,
+        categorical_features=categorical_features,
         label="salary",
         training=True,
     )
 
     _, _, _, _ = process_data(
         data,
-        categorical_features=cat_features,
+        categorical_features=categorical_features,
         label="salary",
         encoder=encoder_test,
         lb=lb_test,
@@ -65,7 +65,7 @@ def test_process_encoder(data, cat_features):
     assert lb.get_params() == lb_test.get_params()
 
 
-def test_inference_above(cat_features):
+def test_inference_above(categorical_features):
     """
     Test inference performance
     """
@@ -107,7 +107,7 @@ def test_inference_above(cat_features):
 
     X, _, _, _ = process_data(
         df_temp,
-        categorical_features=cat_features,
+        categorical_features=categorical_features,
         encoder=encoder,
         lb=lb,
         training=False,
@@ -117,7 +117,7 @@ def test_inference_above(cat_features):
     assert y == ">50K"
 
 
-def test_inference_below(cat_features):
+def test_inference_below(categorical_features):
     """
     Test inference performance
     """
@@ -159,7 +159,7 @@ def test_inference_below(cat_features):
 
     X, _, _, _ = process_data(
         df_temp,
-        categorical_features=cat_features,
+        categorical_features=categorical_features,
         encoder=encoder,
         lb=lb,
         training=False,

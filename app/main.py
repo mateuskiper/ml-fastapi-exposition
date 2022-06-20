@@ -1,19 +1,17 @@
-import os
-
 import numpy as np
 from fastapi import FastAPI
 from joblib import load
 from pandas.core.frame import DataFrame
 from src.data import process_data
 from src.model import inference
-from pydantic_classes import User
 
+from app.pydantic_classes import User
 
 app = FastAPI()
 
 
-@app.post("/inference")
-def inference(user_data: User):
+@app.post("/predict")
+def predict(user_data: User):
     model = load("model/model.joblib")
     encoder = load("model/encoder.joblib")
     lb = load("model/lb.joblib")
@@ -60,14 +58,14 @@ def inference(user_data: User):
         "sex",
         "native-country",
     ]
-    X, _, _, _ = process_data(
+    X_pred, _, _, _ = process_data(
         df_temp,
         categorical_features=cat_features,
         encoder=encoder,
         lb=lb,
         training=False,
     )
-    preds = inference(model, X)
+    preds = inference(model, X_pred)
     y = lb.inverse_transform(preds)[0]
 
     return {"prediction": y}

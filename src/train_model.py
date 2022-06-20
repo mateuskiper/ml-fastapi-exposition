@@ -1,8 +1,8 @@
 from joblib import dump
 from sklearn.model_selection import train_test_split
 
-from src.data import load_data, process_data
-from src.model import train_model
+from data import load_data, process_data
+from model import train_model
 
 data = load_data("data/census.csv")
 
