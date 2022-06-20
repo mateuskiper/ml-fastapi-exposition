@@ -10,6 +10,11 @@ from app.pydantic_classes import User
 app = FastAPI()
 
 
+@app.get("/health")
+def health():
+    return {"msg": "Up"}
+
+
 @app.post("/predict")
 def predict(user_data: User):
     model = load("model/model.joblib")
