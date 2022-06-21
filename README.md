@@ -40,7 +40,7 @@ src/test_main.py
 
 7. Serve the API on local
 ```bash
-uvicorn api_server:app
+uvicorn app.main:app
 ```
 
 ## CI/CD
