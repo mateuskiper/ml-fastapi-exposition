@@ -31,14 +31,19 @@ pytest
 python src/run_model_training.py
 ```
 
-6. Run API tests
+6. Compute slice metrics
+```bash
+python src/compute_score.py
+```
+
+7. Run API tests
 ```bash
 python python sanitycheck.pysrc/test_main.py
 
 src/test_main.py
 ```
 
-7. Serve the API on local
+8. Serve the API on local
 ```bash
 uvicorn app.main:app
 ```

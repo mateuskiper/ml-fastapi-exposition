@@ -8,8 +8,14 @@ Mateus created the model. It is Decision Tree Classifier using the default hyper
 ## Intended Use
 The model should be used to predict a person's salary based on features about their finances.
 
-## Data
-Data is coming from https://archive.ics.uci.edu/ml/datasets/census+income, training is done using 80% of this data and evaluation is done using 20%.
+## Training Data
+The source of data is https://archive.ics.uci.edu/ml/datasets/census+income, 80% for training.
+
+## Evaluation Data
+The source of data is https://archive.ics.uci.edu/ml/datasets/census+income, 20% for evaluation.
+
+## Metrics
+Model accuracy score ~0.78.
 
 ## Ethical Considerations
 The dataset contains data related race, gender and origin country. This will drive to a model that may potentially discriminate people.

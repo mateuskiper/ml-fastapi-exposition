@@ -1,5 +1,9 @@
-from sklearn.tree import DecisionTreeClassifier
+import logging
+
+import numpy as np
 from sklearn.metrics import fbeta_score, precision_score, recall_score
+from sklearn.model_selection import KFold, cross_val_score
+from sklearn.tree import DecisionTreeClassifier
 
 
 def train_model(X_train, y_train):
@@ -17,9 +21,14 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-
     model = DecisionTreeClassifier()
     model.fit(X_train, y_train)
+
+    cv = KFold(n_splits=5, shuffle=True)
+    scores = cross_val_score(model, X_train, y_train, scoring="accuracy", cv=cv)
+    logging.info(
+        "cross_val_score - accuracy: %.2f (%.2f)" % (np.mean(scores), np.std(scores))
+    )
 
     return model
 
