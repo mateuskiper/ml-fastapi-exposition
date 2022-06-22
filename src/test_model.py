@@ -76,7 +76,7 @@ def test_inference_above(categorical_features):
     array = np.array(
         [
             [
-                32,
+                42,
                 "Private",
                 "Some-college",
                 "Married-civ-spouse",
