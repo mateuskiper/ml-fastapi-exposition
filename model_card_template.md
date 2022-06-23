@@ -19,3 +19,6 @@ Model accuracy score ~0.78.
 
 ## Ethical Considerations
 The dataset contains data related race, gender and origin country. This will drive to a model that may potentially discriminate people.
+
+## Caveats and Recommendations
+Given gender classes are binary, which we include as male/female. Further work needed to evaluate across a spectrum of genders.

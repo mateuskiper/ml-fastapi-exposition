@@ -76,15 +76,15 @@ def test_inference_above(categorical_features):
     array = np.array(
         [
             [
-                42,
+                35,
                 "Private",
                 "Some-college",
                 "Married-civ-spouse",
                 "Exec-managerial",
                 "Husband",
-                "Black",
+                "White",
                 "Male",
-                80,
+                60,
                 "United-States",
             ]
         ]
